@@ -1,0 +1,29 @@
+.custom-navbar {
+    background-color: #007bff; /* Adjust this color for your desired shade of blue */
+}
+
+.custom-nav {
+    max-width: 66.6667%;
+    justify-content: space-between;
+}
+
+.nav-link {
+    color: white !important; /* White text color */
+    font-weight: bold; /* Bold text */
+}
+
+/* Styles for smaller screens */
+@media (max-width: 992px) {
+    .custom-navbar {
+        background-color: rgba(0, 123, 255, 0.9); /* Slightly transparent blue */
+    }
+
+    .custom-nav {
+        flex-direction: column; /* Stack the nav items vertically */
+        max-width: 100%; /* Full width for smaller screens */
+    }
+
+    .nav-link {
+        padding: 10px 0; /* Add some padding for vertical spacing */
+    }
+}
