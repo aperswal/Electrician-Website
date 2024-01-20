@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { GoogleMap, LoadScript, Circle } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Circle } from '@react-google-maps/api';
 
 const mapContainerStyle = {
-    width: '400px',
-    height: '300px',
+    width: '600px',
+    height: '400px',
     borderRadius: '10px',
     overflow: 'hidden',
 };
 
-const centerAddress = "1366 W Harbor Dr, Lake Zurich, IL 60047"; // Center Address
+const centerAddress = "1366 W Harbor Dr, Lake Zurich, IL 60047";
 
 const circleOptions = {
     strokeColor: 'rgba(255, 0, 0, 0.5)',
@@ -20,7 +20,6 @@ const circleOptions = {
     draggable: false,
     editable: false,
     visible: true,
-    radius: 5000,
     zIndex: 1
 };
 
@@ -29,10 +28,10 @@ const geocodeAddress = async (address) => {
         const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`);
         const data = await response.json();
         if (data.results && data.results.length > 0) {
-        return data.results[0].geometry.location;
+            return data.results[0].geometry.location;
         } else {
-        console.error('Geocoding failed or no results:', data.status);
-        return null;
+            console.error('Geocoding failed or no results:', data.status);
+            return null;
         }
     } catch (error) {
         console.error('Geocoding error:', error);
@@ -41,41 +40,60 @@ const geocodeAddress = async (address) => {
 };
 
 export default function Map() {
-    const [center, setCenter] = useState(null);
-    const [circles, setCircles] = useState([]);
+    const [circle, setCircle] = useState(null);
+    const [mapCenter, setMapCenter] = useState(null);
+
+    const { isLoaded } = useJsApiLoader({
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_KEY,
+        libraries: ['geometry'],
+    });
 
     useEffect(() => {
-        geocodeAddress(centerAddress).then(setCenter);
+        if (isLoaded) {
+            geocodeAddress(centerAddress).then(centerLocation => {
+                const surroundingLocations = [
+                    'Buffalo Grove Illinois',
+                    'Lake Zurich Illinois',
+                    'Libertyville Illinois',
+                    'Long Grove Illinois'
+                ];
 
-    const surroundingLocations = [
-        'Buffalo Grove Illinois',
-        'Lake Zurich Illinois',
-        'Libertyville Illinois',
-        'Long Grove Illinois'
-    ];
-
-    Promise.all(surroundingLocations.map(address => geocodeAddress(address)))
-        .then(locations => {
-            setCircles(locations.map(location => ({
-            center: location,
-            options: circleOptions
-            })));
-        });
-    }, []);
+                Promise.all(surroundingLocations.map(address => geocodeAddress(address)))
+                    .then(locations => {
+                        let bounds = new window.google.maps.LatLngBounds();
+                        locations.forEach(loc => {
+                            if (loc) {
+                                bounds.extend(new window.google.maps.LatLng(loc.lat, loc.lng));
+                            }
+                        });
+                        const center = bounds.getCenter();
+                        const radius = window.google.maps.geometry.spherical.computeDistanceBetween(center, bounds.getNorthEast());
+                        setCircle({
+                            center: center.toJSON(),
+                            options: { ...circleOptions, radius: radius }
+                        });
+                        setMapCenter(centerLocation || center.toJSON());
+                    });
+            });
+        }
+    }, [isLoaded]);
 
     return (
         <div style={{ position: 'relative' }}>
-        <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY}>
-            <GoogleMap
-            mapContainerStyle={mapContainerStyle}
-            center={center}
-            zoom={8}
-            >
-            {circles.map((circle, index) => (
-                <Circle key={index} center={circle.center} options={circle.options} />
-            ))}
-            </GoogleMap>
-        </LoadScript>
+            {isLoaded ? (
+                <GoogleMap
+                    mapContainerStyle={mapContainerStyle}
+                    center={mapCenter}
+                    zoom={10}
+                >
+                    {circle && (
+                        <Circle
+                            center={circle.center}
+                            options={circle.options}
+                        />
+                    )}
+                </GoogleMap>
+            ) : <div>Loading...</div>}
         </div>
     );
 }

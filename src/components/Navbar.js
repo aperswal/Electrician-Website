@@ -4,14 +4,13 @@ import phoneIcon from '../img/telephone_icon.png'; // Adjust the path as needed
 
 export default function NavbarComponent() {
     const [isNavCollapsed, setIsNavCollapsed] = useState(true);
-    const [navbarDynamicStyle, setNavbarDynamicStyle] = useState({});
+    const [navbarDynamicStyle, setNavbarDynamicStyle] = useState({ zIndex: 1 }); // Set a higher z-index value
 
     const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 50) {
-                // When scrolled, apply these styles
                 setNavbarDynamicStyle({
                     position: 'fixed',
                     top: 0,
@@ -20,10 +19,12 @@ export default function NavbarComponent() {
                     backgroundColor: 'rgba(255, 255, 255, 0.9)',
                     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                     transition: 'all 0.3s',
+                    zIndex: 2, // Set a higher z-index value when scrolling
                 });
             } else {
-                // Reset to default styles when not scrolled
-                setNavbarDynamicStyle({});
+                setNavbarDynamicStyle({
+                    zIndex: 1, // Reset the z-index when not scrolling
+                });
             }
         };
 
@@ -33,7 +34,6 @@ export default function NavbarComponent() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
     const navbarStyle = {
         backgroundColor: 'white',
         borderBottom: '2px solid #d3d3d3',
@@ -46,7 +46,7 @@ export default function NavbarComponent() {
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '100%',
-        padding: '0 100px', // Increased padding on both sides
+        padding: '0 20px', // Adjust padding for all screen sizes
     };
 
     const navContentStyle = {
@@ -111,14 +111,15 @@ export default function NavbarComponent() {
 
                 <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`}>
                     <ul className="navbar-nav" style={navContentStyle}>
-                        <li className="nav-item" style={navLinkStyle}>
-                            <a className="nav-link" href="#services" style={navLinkStyle} onMouseOver={(e) => e.currentTarget.style.color = navLinkHoverStyle.color} onMouseOut={(e) => e.currentTarget.style.color = 'black'}>Services</a>
-                        </li>
+                        
                         <li className="nav-item" style={navLinkStyle}>
                             <a className="nav-link" href="#about-us" style={navLinkStyle} onMouseOver={(e) => e.currentTarget.style.color = navLinkHoverStyle.color} onMouseOut={(e) => e.currentTarget.style.color = 'black'}>About Us</a>
                         </li>
                         <li className="nav-item" style={navLinkStyle}>
-                            <a className="nav-link" href="#gallery" style={navLinkStyle} onMouseOver={(e) => e.currentTarget.style.color = navLinkHoverStyle.color} onMouseOut={(e) => e.currentTarget.style.color = 'black'}>Gallery</a>
+                            <a className="nav-link" href="#services" style={navLinkStyle} onMouseOver={(e) => e.currentTarget.style.color = navLinkHoverStyle.color} onMouseOut={(e) => e.currentTarget.style.color = 'black'}>Services</a>
+                        </li>
+                        <li className="nav-item" style={navLinkStyle}>
+                            <a className="nav-link" href="#gallery" style={navLinkStyle} onMouseOver={(e) => e.currentTarget.style.color = navLinkHoverStyle.color} onMouseOut={(e) => e.currentTarget.style.color = 'black'}>Testimonials</a>
                         </li>
                         <li className="nav-item" style={navLinkStyle}>
                             <a className="nav-link" href="#contact-us" style={navLinkStyle} onMouseOver={(e) => e.currentTarget.style.color = navLinkHoverStyle.color} onMouseOut={(e) => e.currentTarget.style.color = 'black'}>Contact Us</a>
@@ -132,4 +133,21 @@ export default function NavbarComponent() {
             </div>
         </nav>
     );
-};
+}
+
+document.styleSheets[0].insertRule(`
+  @media (max-width: 768px) {
+    .navbar-collapse {
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+    .navbar-nav {
+      flex-direction: row;
+      justify-content: flex-end;
+      width: 100%;
+    }
+    .navbar-toggler {
+      display: block;
+    }
+  }
+`, 0);

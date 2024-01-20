@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import logo from "../img/navbar_logo.png";
-import phoneIcon from "../img/telephone_icon.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faMapMarkerAlt, faPhone} from '@fortawesome/free-solid-svg-icons';
-
 
 export default function Footer() {
     const [showFooter, setShowFooter] = useState(false);
@@ -53,7 +51,7 @@ export default function Footer() {
                     <Column>
                         {/* Grouping phone, hours, and location together */}
                         <PhoneContainer>
-                            <FontAwesomeIcon icon={faPhone} style={{ color: '#fff', marginRight: '10px' }} /> {/* Use FontAwesome icon */}
+                            <FontAwesomeIcon icon={faPhone} style={{ color: '#fff', marginRight: '10px' }} />
                             <PhoneNumber>+1 234 567 8900</PhoneNumber>
                         </PhoneContainer>
                         <InfoContainer>
@@ -76,7 +74,7 @@ const Box = styled.div`
     align-items: center;
     justify-content: center;
     background: gray;
-    padding: 10px 0; // Reduced padding
+    padding: 10px 0;
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -90,13 +88,12 @@ const FooterContainer = styled.div`
     align-items: flex-end;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 0 10px; // Adjusted padding
+    padding: 0 10px;
 
     @media (max-width: 768px) {
         flex-direction: column;
     }
 `;
-
 
 const Column = styled.div`
     display: flex;
@@ -106,23 +103,23 @@ const Column = styled.div`
     justify-content: center;
     margin-bottom: 20px;
     flex: 1;
-    margin-right: 20px; // Add right margin to each column
+    margin-right: 20px;
 
     @media (max-width: 768px) {
         width: 100%;
         margin-bottom: 15px;
-        margin-right: 0; // Remove right margin on smaller screens
+        margin-right: 0;
     }
 
     &:last-child {
-        margin-right: 0; // Remove right margin for the last column
+        margin-right: 0;
     }
 `;
 
 const FooterLink = styled.a`
     color: #fff;
-    margin-bottom: 5px; // Reduced margin
-    font-size: 14px; // Adjusted font-size
+    margin-bottom: 5px;
+    font-size: 14px;
     text-decoration: none;
 
     @media (max-width: 768px) {
@@ -140,16 +137,15 @@ const Row = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px; // Add gap between flex items
+    gap: 20px;
 
     @media (max-width: 768px) {
-        gap: 10px; // Smaller gap on smaller screens
+        gap: 10px;
     }
 `;
 
-
 const LogoImage = styled.img`
-    max-height: 40px; // Reduced height
+    max-height: 40px;
     margin-bottom: 5px;
 
     @media (max-width: 768px) {
@@ -158,12 +154,11 @@ const LogoImage = styled.img`
     }
 `;
 
-
 const PhoneContainer = styled.div`
     display: flex;
     align-items: center;
     font-weight: bold;
-    font-size: 0.8rem; // Adjusted font-size
+    font-size: 0.8rem;
     margin-top: 10px;
     margin-bottom: 10px;
 
@@ -173,19 +168,9 @@ const PhoneContainer = styled.div`
     }
 `;
 
-const PhoneIcon = styled.img`
-    max-width: 20px;
-    margin-right: 10px;
-
-    @media (max-width: 768px) {
-        max-width: 15px;
-        margin-right: 5px;
-    }
-`;
-
 const PhoneNumber = styled.span`
     color: #fff;
-    white-space: nowrap; // Prevents wrapping of the phone number
+    white-space: nowrap;
 
     &:hover {
         color: #fcb700;
@@ -197,18 +182,9 @@ const InfoContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 15px; // Increased bottom margin
+    margin-bottom: 15px;
 
     &:hover {
-        color: #fcb700;
-        transition: 200ms ease-in;
-    }
-`;
-
-const Icon = styled.img`
-    max-width: 20px;
-    margin-right: 10px;
-        &:hover {
         color: #fcb700;
         transition: 200ms ease-in;
     }
@@ -221,8 +197,8 @@ const InfoText = styled.span`
 
     @media (max-width: 768px) {
         font-size: 12px;
-        
     }
+
     &:hover {
         color: #fcb700;
         transition: 200ms ease-in;

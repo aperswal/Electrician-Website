@@ -12,7 +12,6 @@ const GlobalStyle = createGlobalStyle`
     padding: 15px; // Adjust as needed for spacing
   }
 `;
-
 export default function Testimonials() {
     const [slidesToShow, setSlidesToShow] = useState(getSlidesToShow(window.innerWidth));
 
@@ -108,25 +107,25 @@ export default function Testimonials() {
     
 
     return (
-    <>
-        <GlobalStyle />
-        <TestimonialsWrapper>
-            <Slider {...settings}>
-                {reviews.map((review, index) => (
-                    <ReviewCard key={index}>
-                        <ReviewerName>{review.name}</ReviewerName>
-                        <ReviewInfo>
-                            <StarRating rating={review.rating} />
-                            <WeeksAgo>{review.weeksAgo} weeks ago</WeeksAgo>
-                        </ReviewInfo>
-                        <ReviewText>{review.review}</ReviewText>
-                    </ReviewCard>
-                ))}
-            </Slider>
-        </TestimonialsWrapper>
-    </>
-    );
-}
+        <>
+            <GlobalStyle />
+            <TestimonialsWrapper>
+                <Slider {...settings}>
+                    {reviews.map((review, index) => (
+                        <ReviewCard key={index}>
+                            <ReviewerName>{review.name}</ReviewerName>
+                            <ReviewInfo>
+                                <StarRating rating={review.rating} />
+                                <WeeksAgo>{review.weeksAgo} weeks ago</WeeksAgo>
+                            </ReviewInfo>
+                            <ReviewText>{review.review}</ReviewText>
+                        </ReviewCard>
+                    ))}
+                </Slider>
+            </TestimonialsWrapper>
+        </>
+        );
+    }
 
 const TestimonialsWrapper = styled.div`
     position: relative;
@@ -142,20 +141,18 @@ const ReviewCard = styled.div`
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
     text-align: center;
     
-    width: 300px; // Adjust width as needed
-    height: auto; // Height adjusts to content
+    width: 300px;
+    height: auto;
+    margin: 30px; 
 
-    margin: 30px; // Increase margin for more white space
-
-    // Responsive adjustments (optional)
     @media (max-width: 768px) {
-        width: 250px;
-        margin: 20px; // Slightly smaller margin on smaller screens
+        width: 250px; // Adjust width for medium screens
+        margin: 20px; 
     }
 
     @media (max-width: 480px) {
-        width: 200px;
-        margin: 15px; // Even smaller margin on very small screens
+        width: 100%; // Full width on very small screens
+        margin: 15px; 
     }
 `;
 

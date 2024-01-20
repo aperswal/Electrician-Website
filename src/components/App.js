@@ -6,6 +6,7 @@ import Testimonials from "./Testimonials";
 import Footer from "./Footer";
 import Gallery from "./Gallery";
 import Contact from "./Contact";
+import About from "./About";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -15,9 +16,12 @@ function App() {
     <div>
       <Navbar landingRef={landingRef} />
       <Landing ref={landingRef} />
+      <About />
+      
       <Services />
-      <Testimonials />
       <Gallery />
+      <Testimonials />
+      
       <Contact />
       <div style={{ height: '200px' }}></div> {/* Spacing div */}
       <Footer />

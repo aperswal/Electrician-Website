@@ -3,12 +3,13 @@ import Map from './Map';
 
 export default function Contact() {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px', gap: '30px' }}>
-      <div style={{ flex: 1, maxWidth: '600px' }}>
+    <div style={containerStyle}>
+      <div style={mapContainerStyle}>
         <Map />
       </div>
-      <div style={{ flex: 1, maxWidth: '400px', padding: '20px', background: '#f2f2f2', borderRadius: '15px', boxShadow: '0px 0px 10px rgba(0,0,0,0.1)' }}>
-        <form style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+      <div style={formContainerStyle}>
+        <h2 style={headerStyle}>Contact Us</h2>
+        <form style={formStyle}>
           <input type="text" placeholder="Your Name" style={inputStyle} />
           <input type="email" placeholder="Your Email Address" style={inputStyle} />
           <input type="tel" placeholder="Your Phone Number" style={inputStyle} />
@@ -20,6 +21,42 @@ export default function Contact() {
   );
 }
 
+// Styles
+const containerStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  padding: '20px',
+  gap: '30px'
+};
+
+const mapContainerStyle = {
+  flex: 1,
+  maxWidth: '600px'
+};
+
+const formContainerStyle = {
+  flex: 1,
+  maxWidth: '400px',
+  padding: '20px',
+  background: '#f2f2f2',
+  borderRadius: '15px',
+  boxShadow: '0px 0px 10px rgba(0,0,0,0.1)'
+};
+
+const headerStyle = {
+  textAlign: 'center',
+  textDecoration: 'underline',
+  fontWeight: 'bold',
+  color: '#fcb700',
+  marginBottom: '10px'
+};
+
+const formStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '15px'
+};
 const inputStyle = {
   padding: '10px 15px',
   borderRadius: '5px',
@@ -32,7 +69,7 @@ const buttonStyle = {
   padding: '10px 15px',
   borderRadius: '5px',
   border: 'none',
-  background: '#FCB700', // A green color
+  background: '#FCB700',
   color: 'white',
   fontSize: '16px',
   fontWeight: 'bold',
@@ -41,5 +78,15 @@ const buttonStyle = {
   transition: 'background-color 0.3s',
 };
 
-// Add hover effect for button
-document.styleSheets[0].insertRule(`button:hover { background-color: #45a049; }`, 0);
+document.styleSheets[0].insertRule(`
+  @media (max-width: 768px) {
+    ${containerStyle} {
+      flexDirection: 'column';
+      alignItems: 'stretch';
+    }
+    ${mapContainerStyle}, ${formContainerStyle} {
+      maxWidth: '100%';
+      flex: none;
+    }
+  }
+`, 0);
