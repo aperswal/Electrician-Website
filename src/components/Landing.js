@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import electricianImage from '../img/electrician.jpg';
 
 export default function Landing() {
+  // State to track hover status
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Hover event handlers
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
+
   return (
     <div style={landingStyle}>
       <div style={contentStyle}>
@@ -12,7 +19,14 @@ export default function Landing() {
         <p style={{ color: 'black' }}>
           We specialize in everything from installing new outlets to repairing electrical problems in existing wiring. We’ve got over 20 years of experience, so when you need a job done right, look no further than our company.
         </p>
-        <button style={buttonStyle}>
+        <button
+          style={{
+            ...buttonStyle,
+            backgroundColor: isHovered ? '#fcb700' : 'white', // Change color on hover
+          }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           Get a Free Quote Today
         </button>
       </div>
@@ -43,7 +57,6 @@ const contentStyle = {
 };
 
 const buttonStyle = {
-  backgroundColor: 'white',
   color: 'black',
   border: 'none',
   padding: '15px 30px',
@@ -51,17 +64,20 @@ const buttonStyle = {
   cursor: 'pointer',
   boxShadow: '2px 2px 5px rgba(0,0,0,0.3)',
   marginTop: '20px',
+  transition: 'background-color 0.3s ease', // Smooth transition for background color
 };
 
 // Media query for smaller screens
-document.styleSheets[0].insertRule(`
-  @media (max-width: 768px) {
-    ${landingStyle} {
-      alignItems: 'center';
-      padding: '20px';
+if (document.styleSheets.length > 0) {
+  document.styleSheets[0].insertRule(`
+    @media (max-width: 768px) {
+      ${landingStyle} {
+        alignItems: 'center';
+        padding: '20px';
+      }
+      ${contentStyle} {
+        maxWidth: '90%';
+      }
     }
-    ${contentStyle} {
-      maxWidth: '90%';
-    }
-  }
-`, 0);
+  `, 0);
+}

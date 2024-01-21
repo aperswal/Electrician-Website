@@ -8,8 +8,13 @@
 }
 
 .nav-link {
-    color: white !important; /* White text color */
+    color: rgb(0, 0, 0) !important; /* White text color */
     font-weight: bold; /* Bold text */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.nav-link:hover {
+    color: #fcb700 !important; /* Color changes to #fcb700 on hover */
 }
 
 /* Styles for smaller screens */

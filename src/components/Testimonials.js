@@ -107,6 +107,7 @@ export default function Testimonials() {
     
 
     return (
+        <div id="testimonials">
         <>
             <GlobalStyle />
             <TestimonialsWrapper>
@@ -124,6 +125,7 @@ export default function Testimonials() {
                 </Slider>
             </TestimonialsWrapper>
         </>
+        </div>
         );
     }
 

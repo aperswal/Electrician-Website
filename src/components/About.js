@@ -3,6 +3,7 @@ import companyImage from '../img/about_us.jpg';
 
 export default function About() {
   return (
+    <div id="about" style={containerStyle}>
     <div style={containerStyle}>
       <div style={contentStyle}>
         <div style={imageContainerStyle}>
@@ -16,6 +17,7 @@ export default function About() {
           </p>
         </div>
       </div>
+    </div>
     </div>
   );
 }

@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../img/navbar_logo.png'; // Adjust the path as needed
 import phoneIcon from '../img/telephone_icon.png'; // Adjust the path as needed
+import './css/navbar.css';
 
 export default function NavbarComponent() {
     const [isNavCollapsed, setIsNavCollapsed] = useState(true);
     const [navbarDynamicStyle, setNavbarDynamicStyle] = useState({ zIndex: 1 }); // Set a higher z-index value
+    const scrollToSection = (event, sectionId) => {
+        event.preventDefault();
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
@@ -61,6 +69,10 @@ export default function NavbarComponent() {
         fontWeight: 'bold',
         textDecoration: 'none',
         margin: '0 30px', // Further increased spacing between nav items
+        // Adding hover effect
+        ':hover': {
+            color: '#fcb700',
+        },
     };
 
     const navLinkHoverStyle = {
@@ -95,7 +107,7 @@ export default function NavbarComponent() {
                 <a className="navbar-brand" href="/">
                     <img src={logo} alt="Business Logo" style={logoStyle} />
                 </a>
-
+    
                 <button 
                     className="navbar-toggler" 
                     type="button" 
@@ -108,21 +120,20 @@ export default function NavbarComponent() {
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
-
+    
                 <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`}>
                     <ul className="navbar-nav" style={navContentStyle}>
-                        
                         <li className="nav-item" style={navLinkStyle}>
-                            <a className="nav-link" href="#about-us" style={navLinkStyle} onMouseOver={(e) => e.currentTarget.style.color = navLinkHoverStyle.color} onMouseOut={(e) => e.currentTarget.style.color = 'black'}>About Us</a>
+                            <a className="nav-link" href="#about" style={navLinkStyle} onClick={(e) => scrollToSection(e, 'about')}>About Us</a>
                         </li>
                         <li className="nav-item" style={navLinkStyle}>
-                            <a className="nav-link" href="#services" style={navLinkStyle} onMouseOver={(e) => e.currentTarget.style.color = navLinkHoverStyle.color} onMouseOut={(e) => e.currentTarget.style.color = 'black'}>Services</a>
+                            <a className="nav-link" href="#services" style={navLinkStyle} onClick={(e) => scrollToSection(e, 'services')}>Services</a>
                         </li>
                         <li className="nav-item" style={navLinkStyle}>
-                            <a className="nav-link" href="#gallery" style={navLinkStyle} onMouseOver={(e) => e.currentTarget.style.color = navLinkHoverStyle.color} onMouseOut={(e) => e.currentTarget.style.color = 'black'}>Testimonials</a>
+                            <a className="nav-link" href="#testimonials" style={navLinkStyle} onClick={(e) => scrollToSection(e, 'testimonials')}>Testimonials</a>
                         </li>
                         <li className="nav-item" style={navLinkStyle}>
-                            <a className="nav-link" href="#contact-us" style={navLinkStyle} onMouseOver={(e) => e.currentTarget.style.color = navLinkHoverStyle.color} onMouseOut={(e) => e.currentTarget.style.color = 'black'}>Contact Us</a>
+                            <a className="nav-link" href="#contact" style={navLinkStyle} onClick={(e) => scrollToSection(e, 'contact')}>Contact Us</a>
                         </li>
                     </ul>
                 </div>
@@ -135,19 +146,21 @@ export default function NavbarComponent() {
     );
 }
 
-document.styleSheets[0].insertRule(`
-  @media (max-width: 768px) {
-    .navbar-collapse {
-      flex-grow: 1;
-      justify-content: space-between;
+if (document.styleSheets.length > 0) {
+    document.styleSheets[0].insertRule(`
+    @media (max-width: 768px) {
+        .navbar-collapse {
+        flex-grow: 1;
+        justify-content: space-between;
+        }
+        .navbar-nav {
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 100%;
+        }
+        .navbar-toggler {
+        display: block;
+        }
     }
-    .navbar-nav {
-      flex-direction: row;
-      justify-content: flex-end;
-      width: 100%;
-    }
-    .navbar-toggler {
-      display: block;
-    }
-  }
 `, 0);
+}

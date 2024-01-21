@@ -6,6 +6,7 @@ import generatorsServiceImage from '../img/ele_Service3.png';
 
 export default function Services() {
   return (
+    <div id="services" style={containerStyle}>
     <div style={containerStyle}>
       <h2 style={headerStyle}>Our Services</h2>
       <div style={servicesGridStyle}>
@@ -14,6 +15,7 @@ export default function Services() {
         <ServiceItem image={industrialServiceImage} title="Industrial Electrical Services" />
         <ServiceItem image={generatorsServiceImage} title="Residential & Commercial Generators" />
       </div>
+    </div>
     </div>
   );
 }

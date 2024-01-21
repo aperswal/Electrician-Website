@@ -3,6 +3,7 @@ import Map from './Map';
 
 export default function Contact() {
   return (
+    <div id="contact" style={containerStyle}>
     <div style={containerStyle}>
       <div style={mapContainerStyle}>
         <Map />
@@ -17,6 +18,7 @@ export default function Contact() {
           <button type="submit" style={buttonStyle}>Submit</button>
         </form>
       </div>
+    </div>
     </div>
   );
 }

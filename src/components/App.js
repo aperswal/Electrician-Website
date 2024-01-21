@@ -15,16 +15,15 @@ function App() {
   return (
     <div>
       <Navbar landingRef={landingRef} />
-      <Landing ref={landingRef} />
-      <About />
-      
-      <Services />
-      <Gallery />
-      <Testimonials />
-      
-      <Contact />
+      {/* Assign an ID to each section */}
+      <Landing ref={landingRef} id="landing" />
+      <About id="about" />
+      <Services id="services" />
+      <Gallery id="gallery" />
+      <Testimonials id="testimonials" />
+      <Contact id="contact" />
       <div style={{ height: '200px' }}></div> {/* Spacing div */}
-      <Footer />
+      <Footer id="footer" />
     </div>
   );
 }

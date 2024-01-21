@@ -37,16 +37,16 @@ export default function Footer() {
                         <LogoImage src={logo} alt="Logo" />
                     </Column>
                     <Column>
-                        <FooterLink href="#">About Us</FooterLink>
+                        <FooterLink href="#about">About Us</FooterLink>
                     </Column>
                     <Column>
-                        <FooterLink href="#">Services</FooterLink>
+                        <FooterLink href="#services">Services</FooterLink>
                     </Column>
                     <Column>
-                        <FooterLink href="#">Testimonials</FooterLink>
+                        <FooterLink href="#testimonials">Testimonials</FooterLink>
                     </Column>
                     <Column>
-                        <FooterLink href="#">Contact Us</FooterLink>
+                        <FooterLink href="#contact">Contact Us</FooterLink>
                     </Column>
                     <Column>
                         {/* Grouping phone, hours, and location together */}

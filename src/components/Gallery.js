@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faTools, faUserCog, faSmile } from '@fortawesome/free-solid-svg-icons';
 
 export default function ReasonsToChooseUs() {
   return (
@@ -8,38 +8,60 @@ export default function ReasonsToChooseUs() {
       <h2 style={headerStyle}>Why Choose Us</h2>
       <div style={reasonsContainerStyle}>
         <div style={reasonStyle}>
-          <FontAwesomeIcon icon={faCheckCircle} style={iconStyle} />
-          <h3 style={reasonTitleStyle}>Quality Workmanship</h3>
-          <p style={reasonDescriptionStyle}>
-            We take pride in delivering top-quality electrical services with a focus on safety.
-          </p>
+          <div style={iconAndTextContainer}>
+            <FontAwesomeIcon icon={faTools} style={iconStyle} />
+            <div>
+              <h3 style={reasonTitleStyle}>Quality Workmanship</h3>
+              <p style={reasonDescriptionStyle}>
+                We take pride in delivering top-quality electrical services with a focus on safety. Our meticulous attention to detail ensures that every installation, repair, or maintenance task is executed flawlessly.
+              </p>
+            </div>
+          </div>
         </div>
         <div style={verticalLine} />
         <div style={reasonStyle}>
-          <FontAwesomeIcon icon={faCheckCircle} style={iconStyle} />
-          <h3 style={reasonTitleStyle}>Experienced Team</h3>
-          <p style={reasonDescriptionStyle}>
-            Our skilled electricians have over 20 years of experience in the industry.
-          </p>
+          <div style={iconAndTextContainer}>
+            <FontAwesomeIcon icon={faUserCog} style={iconStyle} />
+            <div>
+              <h3 style={reasonTitleStyle}>Experienced Team</h3>
+              <p style={reasonDescriptionStyle}>
+                Our skilled electricians have over 20 years of experience in the industry. Our team brings a wealth of knowledge, staying up-to-date with the latest electrical standards and technologies.
+              </p>
+            </div>
+          </div>
         </div>
         <div style={verticalLine} />
         <div style={reasonStyle}>
-          <FontAwesomeIcon icon={faCheckCircle} style={iconStyle} />
-          <h3 style={reasonTitleStyle}>Customer Satisfaction</h3>
-          <p style={reasonDescriptionStyle}>
-            We are dedicated to ensuring our customers' complete satisfaction on every project.
-          </p>
+          <div style={iconAndTextContainer}>
+            <FontAwesomeIcon icon={faSmile} style={iconStyle} />
+            <div>
+              <h3 style={reasonTitleStyle}>Customer Satisfaction</h3>
+              <p style={reasonDescriptionStyle}>
+                We are dedicated to ensuring our customers' complete satisfaction on every project. We prioritize clear communication and tailored solutions to meet your specific electrical needs.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
+
 // Styles
 const containerStyle = {
   backgroundColor: '#333333', // Dark gray background
   padding: '50px 0',
   textAlign: 'center',
+};
+
+const iconAndTextContainer = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center', // Center content horizontally
+  justifyContent: 'center', // Center content vertically
+  textAlign: 'center', // Ensure text is centered
+  height: '100%' // Take full height of parent
 };
 
 const headerStyle = {
