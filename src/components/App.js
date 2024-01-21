@@ -21,8 +21,9 @@ function App() {
       <Services id="services" />
       <Gallery id="gallery" />
       <Testimonials id="testimonials" />
+      <div style={{ height: '100px' }}></div> {/* Spacing div */}
       <Contact id="contact" />
-      <div style={{ height: '200px' }}></div> {/* Spacing div */}
+      <div style={{ height: '100px' }}></div> {/* Spacing div */}
       <Footer id="footer" />
     </div>
   );

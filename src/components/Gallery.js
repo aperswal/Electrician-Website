@@ -4,6 +4,7 @@ import { faTools, faUserCog, faSmile } from '@fortawesome/free-solid-svg-icons';
 
 export default function ReasonsToChooseUs() {
   return (
+    <div id="gallery" style={containerStyle}>
     <div style={containerStyle}>
       <h2 style={headerStyle}>Why Choose Us</h2>
       <div style={reasonsContainerStyle}>
@@ -43,6 +44,7 @@ export default function ReasonsToChooseUs() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

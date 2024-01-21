@@ -14,6 +14,12 @@ export default function About() {
           <h2 style={headerStyle}>About Our Company</h2>
           <p style={paragraphStyle}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p style={paragraphStyle}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p style={paragraphStyle}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
         </div>
       </div>
@@ -45,7 +51,7 @@ const imageContainerStyle = {
 
 const imgStyle = {
   maxWidth: '100%',
-  height: 'auto',
+  height: '100%',
   borderRadius: '10px',
   boxShadow: '0px 5px 15px rgba(0, 0, 0, 0.2)', // Added shadow for depth
 };

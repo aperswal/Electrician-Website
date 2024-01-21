@@ -130,7 +130,7 @@ export default function NavbarComponent() {
                             <a className="nav-link" href="#services" style={navLinkStyle} onClick={(e) => scrollToSection(e, 'services')}>Services</a>
                         </li>
                         <li className="nav-item" style={navLinkStyle}>
-                            <a className="nav-link" href="#testimonials" style={navLinkStyle} onClick={(e) => scrollToSection(e, 'testimonials')}>Testimonials</a>
+                            <a className="nav-link" href="#gallery" style={navLinkStyle} onClick={(e) => scrollToSection(e, 'gallery')}>Testimonials</a>
                         </li>
                         <li className="nav-item" style={navLinkStyle}>
                             <a className="nav-link" href="#contact" style={navLinkStyle} onClick={(e) => scrollToSection(e, 'contact')}>Contact Us</a>

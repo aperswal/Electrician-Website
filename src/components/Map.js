@@ -3,7 +3,7 @@ import { GoogleMap, useJsApiLoader, Circle } from '@react-google-maps/api';
 
 const mapContainerStyle = {
     width: '600px',
-    height: '400px',
+    height: '450px',
     borderRadius: '10px',
     overflow: 'hidden',
 };

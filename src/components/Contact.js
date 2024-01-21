@@ -1,16 +1,16 @@
 import React from 'react';
 import Map from './Map';
+import './css/contact.css';
 
 export default function Contact() {
   return (
-    <div id="contact" style={containerStyle}>
-    <div style={containerStyle}>
-      <div style={mapContainerStyle}>
-        <Map />
-      </div>
-      <div style={formContainerStyle}>
-        <h2 style={headerStyle}>Contact Us</h2>
-        <form style={formStyle}>
+      <div id="contact" className="contact-container" style={containerStyle}>
+          <div className="map-container" style={mapContainerStyle}>
+              <Map />
+          </div>
+          <div className="form-container" style={formContainerStyle}>
+              <h2 style={headerStyle}>Contact Us</h2>
+              <form style={formStyle}>
           <input type="text" placeholder="Your Name" style={inputStyle} />
           <input type="email" placeholder="Your Email Address" style={inputStyle} />
           <input type="tel" placeholder="Your Phone Number" style={inputStyle} />
@@ -19,11 +19,10 @@ export default function Contact() {
         </form>
       </div>
     </div>
-    </div>
   );
 }
 
-// Styles
+// Inline Styles
 const containerStyle = {
   display: 'flex',
   justifyContent: 'center',
@@ -34,12 +33,10 @@ const containerStyle = {
 
 const mapContainerStyle = {
   flex: 1,
-  maxWidth: '600px'
 };
 
 const formContainerStyle = {
   flex: 1,
-  maxWidth: '400px',
   padding: '20px',
   background: '#f2f2f2',
   borderRadius: '15px',

@@ -5,6 +5,14 @@ export default function Landing() {
   // State to track hover status
   const [isHovered, setIsHovered] = useState(false);
 
+    // Function to scroll to the contact section
+  const scrollToContact = () => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
   // Hover event handlers
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
@@ -26,6 +34,7 @@ export default function Landing() {
           }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onClick={scrollToContact} // Add the onClick event handler
         >
           Get a Free Quote Today
         </button>
