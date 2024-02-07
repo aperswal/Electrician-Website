@@ -9,6 +9,7 @@ import Gallery from "./Gallery";
 import Contact from "./Contact";
 import About from "./About";
 import AboutUsPage from './About_Us_Page'; // Assuming this is your "About Us" page component
+import ServicesPage from './Services_Page'; // Import the Services_Page component
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             </>
           } />
           <Route path="/about-us" element={<AboutUsPage />} />
+          <Route path="/services-page" element={<ServicesPage />} /> {/* Add this line for the Services_Page route */}
         </Routes>
       </div>
     </Router>
