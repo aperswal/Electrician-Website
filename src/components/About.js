@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import companyImage from '../img/about_us.jpg';
 
-export default function About() {
-  // State to manage hover effect on the button
+export default function YourComponentName() {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate(); // Hook to navigate
 
   // Button styles
   const buttonStyle = {
@@ -22,6 +23,8 @@ export default function About() {
     textAlign: 'center', // Ensure text is centered within the button
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Shadow effect for "popped off" look
   };
+
+  const goToAboutUsPage = () => navigate('/about-us');
 
   return (
     <div id="about" style={containerStyle}>
@@ -48,6 +51,7 @@ export default function About() {
                 style={buttonStyle}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
+                onClick={goToAboutUsPage} // Navigate when button is clicked
               >
                 Learn More
               </button>
