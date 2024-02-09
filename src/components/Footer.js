@@ -42,28 +42,26 @@ export default function Footer() {
 
 const FooterContainer = styled.div`
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     max-width: 100%;
     margin: 0 auto;
     padding: 20px 10px;
     background: gray;
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-    }
 `;
 
 const Row = styled.div`
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     gap: 20px;
+    width: 100%;
 
     @media (max-width: 768px) {
-        gap: 10px;
+        flex-direction: column;
+        align-items: center;
     }
 `;
 
@@ -74,17 +72,10 @@ const Column = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-    flex: 1;
-    margin-right: 20px;
 
     @media (max-width: 768px) {
         width: 100%;
         margin-bottom: 15px;
-        margin-right: 0;
-    }
-
-    &:last-child {
-        margin-right: 0;
     }
 `;
 
@@ -139,6 +130,10 @@ const InfoContainer = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 15px;
+
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
 
     &:hover {
         color: #fcb700;

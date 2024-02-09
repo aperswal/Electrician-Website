@@ -1,61 +1,57 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import companyImage from '../img/about_us.jpg';
 
 export default function YourComponentName() {
   const [isHovered, setIsHovered] = useState(false);
-  const navigate = useNavigate(); // Hook to navigate
+  const navigate = useNavigate();
 
-  // Button styles
+  // Responsive button styles with media query for smaller screens
   const buttonStyle = {
-    display: 'block', // Make the button a block element to center it
-    margin: '40px auto 0', // Increase vertical margin for spacing and auto for horizontal centering
-    padding: '15px 30px', // Larger padding for a bigger button
-    backgroundColor: isHovered ? '#fcb700' : '#f2f2f2', // Light gray normally, changes on hover
-    color: '#333', // Dark gray text color
-    border: '2px solid #666', // Dark gray border
+    display: 'block',
+    margin: '40px auto 0',
+    padding: '15px 30px',
+    backgroundColor: isHovered ? '#fcb700' : '#f2f2f2',
+    color: '#333',
+    border: '2px solid #666',
     borderRadius: '20px',
     cursor: 'pointer',
     outline: 'none',
-    fontSize: '1rem', // Larger font size
-    fontWeight: 'bold', // Bold font weight
-    transition: 'background-color 0.3s, color 0.3s, box-shadow 0.3s', // Smooth transition for color, background color, and box-shadow change
-    textAlign: 'center', // Ensure text is centered within the button
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Shadow effect for "popped off" look
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    transition: 'background-color 0.3s, color 0.3s, box-shadow 0.3s',
+    textAlign: 'center',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+    '@media (max-width: 768px)': {
+      fontSize: '0.8rem',
+      padding: '12px 24px',
+      margin: '20px auto 0',
+    },
   };
 
   const goToAboutUsPage = () => navigate('/about-us');
 
   return (
     <div id="about" style={containerStyle}>
-      <div style={containerStyle}>
-        <div style={contentStyle}>
-          <div style={imageContainerStyle}>
-            <img src={companyImage} alt="Company" style={imgStyle} />
-          </div>
+      <div style={responsiveContentStyle}>
+        <div style={imageContainerStyle}>
+          <img src={companyImage} alt="Company" style={responsiveImgStyle} />
+        </div>
 
-          <div style={textContainerStyle}>
-            <h2 style={headerStyle}>About Our Company</h2>
-            <p style={paragraphStyle}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p style={paragraphStyle}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <p style={paragraphStyle}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            {/* Button with hover effect, increased spacing, and "popped off" appearance */}
-            <div style={{ marginTop: '50px', textAlign: 'center' }}>
-              <button
-                style={buttonStyle}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                onClick={goToAboutUsPage} // Navigate when button is clicked
-              >
-                Learn More
-              </button>
-            </div>
+        <div style={textContainerStyle}>
+          <h2 style={headerStyle}>About Our Company</h2>
+          <p style={paragraphStyle}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+          </p>
+          <div style={{ marginTop: '50px', textAlign: 'center' }}>
+            <button
+              style={buttonStyle}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              onClick={goToAboutUsPage}
+            >
+              Learn More
+            </button>
           </div>
         </div>
       </div>
@@ -63,34 +59,41 @@ export default function YourComponentName() {
   );
 }
 
-
-
-// Styles
+// Adapted styles for responsiveness
 const containerStyle = {
-  backgroundColor: '#f2f2f2', // Light gray background
-  padding: '60px 0', // Increased padding for better spacing
+  backgroundColor: '#f2f2f2',
+  padding: '60px 0',
   display: 'flex',
   justifyContent: 'center',
 };
 
-const contentStyle = {
+const responsiveContentStyle = {
   display: 'flex',
+  flexDirection: 'row', // Default to row layout
   alignItems: 'center',
   maxWidth: '1200px',
   width: '100%',
   padding: '0 20px',
+  '@media (max-width: 768px)': {
+    flexDirection: 'column', // Switch to column layout for smaller screens
+    alignItems: 'center',
+  },
 };
 
 const imageContainerStyle = {
   flex: 1,
-  marginRight: '100px', // Added margin for better spacing
+  marginRight: '100px',
+  '@media (max-width: 768px)': {
+    marginRight: '0',
+    marginBottom: '30px', // Add bottom margin when in column layout
+  },
 };
 
-const imgStyle = {
+const responsiveImgStyle = {
   maxWidth: '100%',
-  height: '100%',
+  height: 'auto', // Ensure the image height scales with its width
   borderRadius: '10px',
-  boxShadow: '0px 5px 15px rgba(0, 0, 0, 0.2)', // Added shadow for depth
+  boxShadow: '0px 5px 15px rgba(0, 0, 0, 0.2)',
 };
 
 const textContainerStyle = {
@@ -98,13 +101,19 @@ const textContainerStyle = {
 };
 
 const headerStyle = {
-  fontSize: '2rem', // Larger font size for the header
-  marginBottom: '20px', // Increased margin for better separation
-  color: '#333', // Darker text color
+  fontSize: '2rem',
+  marginBottom: '20px',
+  color: '#333',
+  '@media (max-width: 768px)': {
+    fontSize: '1.5rem', // Smaller font size for smaller screens
+  },
 };
 
 const paragraphStyle = {
-  fontSize: '1.2rem', // Slightly larger font size for the paragraph
-  lineHeight: '1.5', // Improved line height for readability
-  color: '#666', // Dark gray text color
+  fontSize: '1.2rem',
+  lineHeight: '1.5',
+  color: '#666',
+  '@media (max-width: 768px)': {
+    fontSize: '1rem', // Smaller font size for smaller screens
+  },
 };

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import electricianImage from '../img/electrician.jpg';
+import './css/landing.css';
 
 export default function Landing() {
   // State to track hover status

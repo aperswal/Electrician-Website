@@ -35,28 +35,39 @@ const serviceDescriptions = {
             justifyContent: 'space-between',
             backgroundColor: service.bgColor,
             color: service.textColor,
-            marginBottom: 0, // No space between panels
+            '@media (max-width: 768px)': {
+              flexDirection: 'column', // Stack vertically on smaller screens
+              padding: '20px', // Reduce padding on smaller screens
+            },
           }}>
             <img src={service.image} alt={service.title} style={{
-              width: '35%',
-              margin: '0 20px',
-              transition: 'transform 0.3s ease', // Smooth transition for transform effects
-              cursor: 'pointer' // Change cursor to pointer to indicate it's interactive
-            }} 
-            onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'} // Scale up on hover
-            onMouseLeave={(e) => e.target.style.transform = 'scale(1)'} // Scale back to normal
+              width: '100%', // Full width on smaller screens
+              maxWidth: '35%', // Max width on larger screens
+              transition: 'transform 0.3s ease',
+              cursor: 'pointer',
+              '@media (max-width: 768px)': {
+                margin: '0 auto 20px', // Center image and add margin below on smaller screens
+              },
+            }}
+            onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+            onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
             />
-            <div style={{ width: '55%', textAlign: 'left' }}>
+            <div style={{
+              width: '100%', // Full width on smaller screens
+              maxWidth: '55%', // Max width on larger screens
+              textAlign: 'left',
+              '@media (max-width: 768px)': {
+                marginTop: '20px', // Add margin top for spacing on smaller screens
+              },
+            }}>
               <h2 style={{ fontWeight: 'bold', fontSize: '1.5rem', marginBottom: '10px' }}>{service.title}</h2>
               <p style={{ fontSize: '1.2rem', lineHeight: '1.8' }}>{service.description}</p>
             </div>
           </div>
         ))}
-      <Gallery id="gallery" />
-      <div style={{ height: '100px' }}></div>
-      <Contact id="contact" />
-      <div style={{ height: '100px' }}></div>
-      <Footer id="footer" />
-    </div>
-  );
-}
+        <Gallery id="gallery" />
+        <Contact id="contact" />
+        <Footer id="footer" />
+      </div>
+    );
+  }

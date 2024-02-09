@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { GoogleMap, useJsApiLoader, Circle } from '@react-google-maps/api';
 
 const mapContainerStyle = {
-    width: '600px',
-    height: '450px',
+    width: '100vw', // Use viewport width for full width on small devices
+    height: '50vh', // Use viewport height to ensure the map is visible but not too large on small screens
     borderRadius: '10px',
     overflow: 'hidden',
+    maxWidth: '600px', // Limit the size on larger screens
+    margin: '0 auto', // Center the map container
 };
 
 const centerAddress = "1366 W Harbor Dr, Lake Zurich, IL 60047";
@@ -22,7 +24,6 @@ const circleOptions = {
     visible: true,
     zIndex: 1
 };
-
 const geocodeAddress = async (address) => {
     try {
         const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`);
@@ -77,9 +78,8 @@ export default function Map() {
             });
         }
     }, [isLoaded]);
-
     return (
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: 'relative', width: '100%', padding: '0 10px', boxSizing: 'border-box' }}> {/* Ensure the container fits small screens with some padding */}
             {isLoaded ? (
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle}

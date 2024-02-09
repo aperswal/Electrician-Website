@@ -11,7 +11,21 @@ const GlobalStyle = createGlobalStyle`
   .slick-slide {
     padding: 15px; // Adjust as needed for spacing
   }
+
+  .slick-prev, .slick-next {
+    font-size: 20px; // Increase size for better visibility and touch interaction
+    z-index: 1; // Ensure arrows are always clickable
+
+    @media (max-width: 768px) {
+      font-size: 24px; // Larger on smaller screens
+    }
+  }
+
+  .slick-dots li button:before {
+    font-size: 12px; // Adjust for touch interaction
+  }
 `;
+
 export default function Testimonials() {
     const [slidesToShow, setSlidesToShow] = useState(getSlidesToShow(window.innerWidth));
 
@@ -137,46 +151,54 @@ const TestimonialsWrapper = styled.div`
 `;
 
 const ReviewCard = styled.div`
-    background: #f8f8f8;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-    text-align: center;
-    
-    width: 300px;
-    height: auto;
-    margin: 30px; 
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  text-align: center;
+  
+  width: 300px;
+  height: auto;
+  margin: 30px;
 
-    @media (max-width: 768px) {
-        width: 250px; // Adjust width for medium screens
-        margin: 20px; 
-    }
+  @media (max-width: 768px) {
+    width: 250px; // Adjust width for medium screens
+    margin: 20px; 
+  }
 
-    @media (max-width: 480px) {
-        width: 100%; // Full width on very small screens
-        margin: 15px; 
-    }
+  @media (max-width: 480px) {
+    width: 100%; // Full width on very small screens
+    margin: 15px; 
+  }
 `;
 
-
-
 const ReviewerName = styled.h3`
-    color: #333;
-    margin-bottom: 5px;
+  color: #333;
+  margin-bottom: 5px;
+  font-size: 1.2rem; // Adjustable font size
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const ReviewInfo = styled.div`
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 `;
 
 const WeeksAgo = styled.span`
-    display: block;
-    color: #666;
-    font-size: 0.9em;
+  display: block;
+  color: #666;
+  font-size: 0.9em;
 `;
 
 const ReviewText = styled.p`
-    color: #555;
+  color: #555;
+  font-size: 1rem; // Adjustable font size
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const StarRating = ({ rating }) => {
