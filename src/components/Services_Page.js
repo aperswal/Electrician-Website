@@ -65,8 +65,11 @@ const serviceDescriptions = {
             </div>
           </div>
         ))}
+        <div style={{ height: '100px' }}></div>
         <Gallery id="gallery" />
+        <div style={{ height: '100px' }}></div>
         <Contact id="contact" />
+        <div style={{ height: '100px' }}></div>
         <Footer id="footer" />
       </div>
     );

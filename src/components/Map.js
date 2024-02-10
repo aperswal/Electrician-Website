@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, useJsApiLoader, Circle } from '@react-google-maps/api';
 
+// Updated map container style for better responsiveness
 const mapContainerStyle = {
-    width: '100vw', // Use viewport width for full width on small devices
-    height: '50vh', // Use viewport height to ensure the map is visible but not too large on small screens
+    width: '100%', // This will make the map width responsive to the container's width
+    height: '50vh', // This makes the map's height responsive and adaptable to different screen sizes
     borderRadius: '10px',
     overflow: 'hidden',
     maxWidth: '600px', // Limit the size on larger screens
@@ -24,6 +25,7 @@ const circleOptions = {
     visible: true,
     zIndex: 1
 };
+
 const geocodeAddress = async (address) => {
     try {
         const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${process.env.REACT_APP_GOOGLE_MAPS_KEY}`);
@@ -78,8 +80,9 @@ export default function Map() {
             });
         }
     }, [isLoaded]);
+
     return (
-        <div style={{ position: 'relative', width: '100%', padding: '0 10px', boxSizing: 'border-box' }}> {/* Ensure the container fits small screens with some padding */}
+        <div style={{ position: 'relative', width: '100%', padding: '0', boxSizing: 'border-box' }}> {/* Adjusted to remove padding for full-width on small screens */}
             {isLoaded ? (
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle}
